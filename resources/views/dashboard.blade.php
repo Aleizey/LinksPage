@@ -16,6 +16,8 @@
                     {{$links->links()}}
 
                     <small>Contributed by: {{$link->creator->name}} {{$link->updated_at->diffForHumans()}}</small>
+
+                    <!-- Este código sirve para mostrar el nombre del autor y el tiempo transcurrido. Esto sirve para ver qué usuarios han subido un link  -->
                 </div>
             </div>
         </div>
