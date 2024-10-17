@@ -11,12 +11,19 @@ class CommunityLink extends Model
     protected $fillable = [
         'title',
         'link',
-        'user_id',
         'channel_id',
     ];
     public function creator()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+    public function channel()
+    {
+        return $this->belongsTo(Channel::class);
+    }
 }
+
+
+// ¿Qué problema de seguridad representa esto?
+// Que el usuario podria ponerse en cualquer canal y tener cualquier id 
 

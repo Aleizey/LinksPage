@@ -10,4 +10,10 @@ class Channel extends Model
     use HasFactory;
     protected $fillable = ['title', 'slug', 'color'];
 
+    public function all_link()
+    {
+
+        return $this->hasMany(CommunityLink::class);
+    }
 }
+
