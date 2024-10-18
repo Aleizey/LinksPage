@@ -20,10 +20,9 @@ Route::get('/contact', function () {
 
 })->middleware(['auth', 'verified'])->name('contact');
 
-Route::get('/analytics', function () {
-    return view('analytics');
+Route::get('/mylinks', [CommunityLinkController::class, 'myLinks'])
+->middleware(['auth', 'verified'])->name('mylinks');
 
-})->middleware(['auth', 'verified'])->name('analytics');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

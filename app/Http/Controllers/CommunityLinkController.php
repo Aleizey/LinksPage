@@ -21,12 +21,20 @@ class CommunityLinkController extends Controller
         return view('dashboard', compact('links', 'channels'));
     }
 
+    public function myLinks()
+    {
+        $user = Auth::user();
+        $links = $user->myLinks()->paginate(10);
+        return view('mylinks', compact('links'));
+    }
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        $links = CommunityLink::where('approved', 1)->paginate(10);
+        $channels = Channel::orderBy('title', 'asc')->get();
+        return view('mylinks', compact('links', 'channels'));
     }
 
     /**
