@@ -50,4 +50,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(CommunityLink::class);
     }
+    public function isTrusted()
+    {
+        return $this->trusted;
+    }
 }
