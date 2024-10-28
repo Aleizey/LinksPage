@@ -14,6 +14,11 @@ class CommunityLink extends Model
         'link',
         'channel_id'
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'community_link_users');
+    }
     public function creator()
     {
         return $this->belongsTo(User::class, 'user_id');

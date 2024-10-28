@@ -14,7 +14,8 @@
                         <li class="mt-3 p-4 border">
                             {{$link->title}}
                             <small class="w-1"> - Contributed by: {{$link->creator->name}}
-                                {{$link->updated_at->diffForHumans()}}</small>
+                                {{$link->updated_at->diffForHumans()}}</small> - 
+                                {{ $link->users()->count() }}
                         </li>
                         <span class="inline-block px-2 py-1 text-white text-sm font-semibold rounded"
                             style="background-color: {{ $link->channel->color }}">
@@ -22,6 +23,7 @@
                                 {{ $link->channel->title }}
                             </a>
                         </span>
+                        
                     @endforeach
 
                 </ul>
