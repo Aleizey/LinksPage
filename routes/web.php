@@ -15,13 +15,15 @@ Route::get('/dashboard', [CommunityLinkController::class, 'index'])
 Route::post('/dashboard', [CommunityLinkController::class, 'store'])
     ->middleware(['auth', 'verified']);
 
+Route::get('dashboard/{channel:slug}', [CommunityLinkController::class, 'index']);
+
 Route::get('/contact', function () {
     return view('contact');
 
 })->middleware(['auth', 'verified'])->name('contact');
 
 Route::get('/mylinks', [CommunityLinkController::class, 'myLinks'])
-->middleware(['auth', 'verified'])->name('mylinks');
+    ->middleware(['auth', 'verified'])->name('mylinks');
 
 
 Route::middleware('auth')->group(function () {
@@ -31,3 +33,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+// ¿Qué es el implicit model binding?
+// El implicit model binding en Laravel es una característica que permite enlazar automáticamente los modelos
+//  de la base de datos a las rutas y controladores, utilizando el identificador (ID) proporcionado en la URL.

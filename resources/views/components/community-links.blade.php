@@ -1,6 +1,6 @@
 @props(['links'])
 @if ($links->isEmpty())
-<div class="bg-white p-10 rounded-lg shadow-lg text-center">
+    <div class="bg-white p-10 rounded-lg shadow-lg text-center">
         <h1 class="text-2xl font-bold mb-4">¡Lo siento!</h1>
         <p class="text-gray-700">Actualmente no hay enlaces disponibles.</p>
     </div>
@@ -18,7 +18,9 @@
                         </li>
                         <span class="inline-block px-2 py-1 text-white text-sm font-semibold rounded"
                             style="background-color: {{ $link->channel->color }}">
-                            {{ $link->channel->title }}
+                            <a href="/dashboard/{{ $link->channel->slug }}">
+                                {{ $link->channel->title }}
+                            </a>
                         </span>
                     @endforeach
 
