@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CommunityLinkController;
+use App\Http\Controllers\CommunityLinkUserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,9 @@ Route::get('/contact', function () {
 
 Route::get('/mylinks', [CommunityLinkController::class, 'myLinks'])
     ->middleware(['auth', 'verified'])->name('mylinks');
+
+Route::post('/votes/{link}', [CommunityLinkUserController::class, 'store'])
+    ->middleware(['auth', 'verified'])->name('votes');
 
 
 Route::middleware('auth')->group(function () {
