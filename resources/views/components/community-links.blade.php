@@ -22,7 +22,7 @@
 
                         'bg-gray-500 hover:bg-gray-600 text-white'
 
-                                                }}" {{ !Auth::user()->isTrusted() ? 'disabled' : '' }}>
+                                                            }}" {{ !Auth::user()->isTrusted() ? 'disabled' : '' }}>
 
                                         {{ $link->users()->count() }}
 
@@ -46,9 +46,12 @@
                     @endforeach
 
                 </ul>
-                {{$links->links()}}
+                {{ $links->appends($_GET)->links() }}
             </div>
         </div>
     </div>
 
 @endif
+
+
+<!-- Esta función permite a los usuarios alternar entre las vistas de "Más recientes" y "Más populares". Verifica si el parámetro popular está en la URL usando request()->exists('popular'), lo que determina qué enlace está activo. Si popular está presente, "Most recent" se desactiva y "Most popular" se resalta. Al hacer clic en "Most recent", se vuelve a la vista sin el parámetro, y al seleccionar "Most popular", se añade el parámetro a la URL. -->
