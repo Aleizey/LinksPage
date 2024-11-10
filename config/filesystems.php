@@ -75,3 +75,7 @@ return [
     ],
 
 ];
+
+// Explica en detalle qué es lo que hace el comando anterior.
+
+// El comando php artisan storage:link en Laravel crea un enlace simbólico (también conocido como symlink) entre el directorio de almacenamiento (storage) y el directorio público (public) de la aplicación.

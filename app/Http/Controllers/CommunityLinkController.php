@@ -17,27 +17,30 @@ class CommunityLinkController extends Controller
     public function index(Channel $channel = null)
     {
 
+        $query = new CommunityLinkQuery();
+        $channels = Channel::orderBy('title', 'asc')->get();
+
         if (request()->exists('popular')) {
             // To-Do
 
             $channel ?
                 $links = (new CommunityLinkQuery())->getMostPopularByChannel($channel) :
-                $links = (new CommunityLinkQuery())->getMostPopular();
-            ;
+                $links = (new CommunityLinkQuery())->getMostPopular();;
+        } else if (request()->exists('search')) {
 
-        } else {
+            $links = $query->searchTitle(request()->get("search"));
+
+        } else if (!request()->exists('popular')) {
 
             if ($channel) {
 
                 $links = (new CommunityLinkQuery())->getByChannel($channel);
-
             } else {
 
                 $links = (new CommunityLinkQuery())->getAll();
             }
         }
 
-        $channels = Channel::orderBy('title', 'asc')->get();
         return view('dashboard', compact('links', 'channels'));
     }
 
@@ -71,7 +74,6 @@ class CommunityLinkController extends Controller
 
         if ($resultado) {
             return back();
-
         } else {
 
             $link->user_id = Auth::id();
