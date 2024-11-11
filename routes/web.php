@@ -4,6 +4,7 @@ use App\Http\Controllers\CommunityLinkController;
 use App\Http\Controllers\CommunityLinkUserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,7 +21,6 @@ Route::get('dashboard/{channel:slug}', [CommunityLinkController::class, 'index']
 
 Route::get('/contact', function () {
     return view('contact');
-
 })->middleware(['auth', 'verified'])->name('contact');
 
 Route::get('/mylinks', [CommunityLinkController::class, 'myLinks'])
@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function () {
 });
 
 // Route::get('/search', [CommunityLinkController::class, 'index'])->name('search');
+Route::resource('users', UserController::class);
 
 require __DIR__ . '/auth.php';
 
