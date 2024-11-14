@@ -36,8 +36,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::resource('users', UserController::class)
+->middleware('can:administrate,App\Models\User');
+// ->name('users');
+
 // Route::get('/search', [CommunityLinkController::class, 'index'])->name('search');
-Route::resource('users', UserController::class);
 
 require __DIR__ . '/auth.php';
 

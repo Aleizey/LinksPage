@@ -21,6 +21,11 @@
                     <x-nav-link :href="route('mylinks')" :active="request()->routeIs('mylinks')">
                         {{ __('My Links') }}
                     </x-nav-link>
+                    @can('administrate', App\Models\User::class)
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
+                        {{ __('Admin') }}
+                    </x-nav-link>
+                    @endcan
                 </div>
             </div>
 
