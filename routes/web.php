@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommunityLinkController;
 use App\Http\Controllers\CommunityLinkUserController;
+// use App\Http\Controllers\Api\v1\CommunityLinkController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -38,9 +39,6 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('users', UserController::class)
 ->middleware('can:administrate,App\Models\User');
-// ->name('users');
-
-// Route::get('/search', [CommunityLinkController::class, 'index'])->name('search');
 
 require __DIR__ . '/auth.php';
 
