@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use HasApiTokens;
+// use HasApiTokens;
+use Laravel\Sanctum\HasApiTokens;
 
 /**
  * Class User
@@ -29,6 +30,8 @@ use HasApiTokens;
  */
 class User extends Authenticatable
 {
+
+    use HasApiTokens, HasFactory, Notifiable;
 
     protected $perPage = 20;
 

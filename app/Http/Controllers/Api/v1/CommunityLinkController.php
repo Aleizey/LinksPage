@@ -29,8 +29,15 @@ class CommunityLinkController extends Controller
             $links = $query->getAll();
         }
 
-        return response()->json($links, 200);
+        $response = [
+            'status' => 'success',
+            'message' => 'Products are retrieved successfully.',
+            'data' => $links,
+        ];
 
+        return response()->json($response, 200);
+
+        
     }
 
     /**
